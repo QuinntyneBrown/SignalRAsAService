@@ -9,7 +9,5 @@ namespace SignalRAsAService.Infrastructure.Data
         public AppDbContext(DbContextOptions options)
             :base(options) { }
 
-        public DbSet<Snapshot> Snapshots { get; set; }
-        public DbSet<StoredEvent> StoredEvents { get; set; }
     }
 }

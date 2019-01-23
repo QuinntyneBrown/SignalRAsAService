@@ -38,38 +38,22 @@ namespace SignalRAsAService.API.Features.Users
 
         public class Handler : IRequestHandler<Request, Response>
         {
-            private readonly IRepository _repository;
             private readonly IPasswordHasher _passwordHasher;
             private readonly ISecurityTokenFactory _securityTokenFactory;
 
             public Handler(
-                IRepository repository,
                 ISecurityTokenFactory securityTokenFactory, 
                 IPasswordHasher passwordHasher)
             {
-                _repository = repository;
                 _securityTokenFactory = securityTokenFactory;
                 _passwordHasher = passwordHasher;
             }
 
-            public Task<Response> Handle(Request request, CancellationToken cancellationToken)
+            public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {                                
-                var user = _repository.Query<User>().Single(x => x.Username == request.Username);
-
-                var roles = new List<string>();
-
-                if (user.Password != _passwordHasher.HashPassword(user.Salt, request.Password))
-                    throw new System.Exception();
-
-                foreach (var roleId in user.RoleIds)
-                    roles.Add(_repository.Query<Role>(roleId).Name);
-
-                return Task.FromResult(new Response()
+                return await Task.FromResult(new Response()
                 {
-                    AccessToken = _securityTokenFactory.Create(user.UserId, request.Username, roles),
-                    UserId = user.UserId,
-                    Roles = roles,
-                    Username = request.Username
+
                 });
             }            
         }

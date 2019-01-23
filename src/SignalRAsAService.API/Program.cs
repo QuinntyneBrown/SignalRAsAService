@@ -63,11 +63,6 @@ namespace SignalRAsAService.API
                 if (args.Contains("seeddb"))
                 {
                     context.Database.EnsureCreated();
-                    var eventStore = scope.ServiceProvider.GetRequiredService<IEventStore>();
-                    var repository = scope.ServiceProvider.GetRequiredService<IRepository>();
-                    var queue = scope.ServiceProvider.GetRequiredService<IBackgroundTaskQueue>();
-                    AppInitializer.Seed(dateTime, eventStore, services, repository);
-                    queue.DequeueAsync(default(CancellationToken)).GetAwaiter().GetResult();
                 }                
             }
         }        

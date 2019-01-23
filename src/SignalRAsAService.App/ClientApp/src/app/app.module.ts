@@ -20,8 +20,9 @@ import { HomeModule } from './home/home.module';
     LoginModule
   ],
   providers: [
-    { provide: "baseUrl", useValue: "http://localhost:11099/" }
+    { provide: "baseUrl", useValue: "http://localhost:22790/" }
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

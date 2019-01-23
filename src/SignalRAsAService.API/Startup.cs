@@ -24,13 +24,7 @@ namespace SignalRAsAService.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IDateTime, MachineDateTime>();
-            services.AddTransient<IEventStore, EventStore>();
             services.AddHttpContextAccessor();
-            services.AddSingleton<IRepository, Repository>();
-            services.AddSingleton<ICommandPreProcessor, CommandPreProcessor>();
-            services.AddSingleton<ICommandRegistry, CommandRegistry>();
-            services.AddHostedService<QueuedHostedService>();
-            services.AddSingleton<IBackgroundTaskQueue, BackgroundTaskQueue>();
 
             services.AddCustomMvc()
                 .AddFluentValidation(cfg => { cfg.RegisterValidatorsFromAssemblyContaining<Startup>(); });
@@ -49,7 +43,7 @@ namespace SignalRAsAService.API
             app.UseAuthentication()            
                 .UseCors(CorsDefaults.Policy)            
                 .UseMvc()
-                .UseSignalR(routes => routes.MapHub<AppHub>("/hub"))
+                .UseAzureSignalR(o => o.MapHub<AppHub>("/hub"))
                 .UseSwagger()
                 .UseSwaggerUI(options =>
                 {

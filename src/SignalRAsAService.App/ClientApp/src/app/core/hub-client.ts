@@ -25,7 +25,7 @@ export class HubClient {
       };
 
       this._connection = this._connection || new HubConnectionBuilder()
-        .withUrl(`${this._baseUrl}hub`,options)
+        .withUrl(`${this._baseUrl}hub?something=foo`,options)
         .build();
 
       this._connection.on("ping", (value) => {
