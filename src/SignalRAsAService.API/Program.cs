@@ -1,15 +1,12 @@
-using SignalRAsAService.Core.Interfaces;
-using SignalRAsAService.Infrastructure;
-using SignalRAsAService.Infrastructure.Data;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SignalRAsAService.Infrastructure.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 
 namespace SignalRAsAService.API
 {
@@ -49,7 +46,6 @@ namespace SignalRAsAService.API
             using (var scope = services.CreateScope())
             {
                 var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-                var dateTime = scope.ServiceProvider.GetRequiredService<IDateTime>();
 
                 if (args.Contains("ci"))
                     args = new string[4] { "dropdb", "migratedb", "seeddb", "stop" };

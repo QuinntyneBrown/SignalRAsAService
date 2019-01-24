@@ -1,25 +1,15 @@
-using SignalRAsAService.Core.Identity;
-using SignalRAsAService.Core.Interfaces;
-using SignalRAsAService.Core.Models;
-using SignalRAsAService.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System.Linq;
+using SignalRAsAService.Infrastructure.Data;
 using System.Reflection;
-using System.Security.Cryptography;
 
 namespace SignalRAsAService.API
 {
     public class AppInitializer : IDesignTimeDbContextFactory<AppDbContext>
     {
-        public static void Seed(
-            IDateTime dateTime,
-            IServiceScopeFactory services)
-        {
-
-        }
+        public static void Seed(IServiceScopeFactory services) { }
 
         public AppDbContext CreateDbContext(string[] args)
         {
