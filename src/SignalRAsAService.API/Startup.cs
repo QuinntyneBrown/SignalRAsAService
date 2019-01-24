@@ -10,7 +10,6 @@ using Microsoft.Extensions.Primitives;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using SignalRAsAService.Core;
-using SignalRAsAService.Core.Behaviours;
 using SignalRAsAService.Core.Identity;
 using SignalRAsAService.Core.Interfaces;
 using SignalRAsAService.Infrastructure.Data;
@@ -33,7 +32,7 @@ namespace SignalRAsAService.API
         {
             services.AddCors(options => options.AddPolicy("CorsPolicy",
                 builder => builder
-                .WithOrigins("https://SignalRAsAService.z27.web.core.windows.net,http://localhost:4200")
+                .AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader()
                 .SetIsOriginAllowed(isOriginAllowed: _ => true)
@@ -46,10 +45,7 @@ namespace SignalRAsAService.API
             services.AddSingleton<IPasswordHasher, PasswordHasher>();
 
             services.AddSingleton<ISecurityTokenFactory, SecurityTokenFactory>();
-
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
-
-
+            
             var settings = new JsonSerializerSettings
             {
                 ContractResolver = new SignalRContractResolver()

@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRAsAService.Core", "s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRAsAService.Infrastructure", "src\SignalRAsAService.Infrastructure\SignalRAsAService.Infrastructure.csproj", "{7DEC1FE1-786D-43DF-BC55-1F9ABD099209}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRAsAService.App", "src\SignalRAsAService.App\SignalRAsAService.App.csproj", "{7F646201-1C9E-4060-A349-1D81494AEC7F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,18 +57,6 @@ Global
 		{7DEC1FE1-786D-43DF-BC55-1F9ABD099209}.Release|x64.Build.0 = Release|Any CPU
 		{7DEC1FE1-786D-43DF-BC55-1F9ABD099209}.Release|x86.ActiveCfg = Release|Any CPU
 		{7DEC1FE1-786D-43DF-BC55-1F9ABD099209}.Release|x86.Build.0 = Release|Any CPU
-		{7F646201-1C9E-4060-A349-1D81494AEC7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7F646201-1C9E-4060-A349-1D81494AEC7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7F646201-1C9E-4060-A349-1D81494AEC7F}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{7F646201-1C9E-4060-A349-1D81494AEC7F}.Debug|x64.Build.0 = Debug|Any CPU
-		{7F646201-1C9E-4060-A349-1D81494AEC7F}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{7F646201-1C9E-4060-A349-1D81494AEC7F}.Debug|x86.Build.0 = Debug|Any CPU
-		{7F646201-1C9E-4060-A349-1D81494AEC7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7F646201-1C9E-4060-A349-1D81494AEC7F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7F646201-1C9E-4060-A349-1D81494AEC7F}.Release|x64.ActiveCfg = Release|Any CPU
-		{7F646201-1C9E-4060-A349-1D81494AEC7F}.Release|x64.Build.0 = Release|Any CPU
-		{7F646201-1C9E-4060-A349-1D81494AEC7F}.Release|x86.ActiveCfg = Release|Any CPU
-		{7F646201-1C9E-4060-A349-1D81494AEC7F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -79,7 +65,6 @@ Global
 		{EC16A64A-7DB2-4DD8-916B-50719447A8BC} = {904215FC-8036-46CC-A3B5-1D462BCD6810}
 		{377ACCA4-CECB-4534-A9FA-61382120E8C5} = {904215FC-8036-46CC-A3B5-1D462BCD6810}
 		{7DEC1FE1-786D-43DF-BC55-1F9ABD099209} = {904215FC-8036-46CC-A3B5-1D462BCD6810}
-		{7F646201-1C9E-4060-A349-1D81494AEC7F} = {904215FC-8036-46CC-A3B5-1D462BCD6810}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B8556709-49FE-450F-B525-5EB0B30D242A}

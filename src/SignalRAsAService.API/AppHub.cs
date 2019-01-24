@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
 
-namespace SignalRAsAService.Core
+namespace SignalRAsAService.API
 {
     //[Authorize(AuthenticationSchemes = "Bearer")]
     public class AppHub: Hub {

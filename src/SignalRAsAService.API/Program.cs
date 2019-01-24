@@ -1,12 +1,5 @@
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using SignalRAsAService.Infrastructure.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace SignalRAsAService.API
 {
@@ -14,53 +7,11 @@ namespace SignalRAsAService.API
     {
         public static void Main(string[] args)
         {
-            var builder = CreateWebHostBuilder();
-
-            if (args.Contains("ci"))
-            {
-                builder.ConfigureAppConfiguration((builderContext, config) =>
-                {
-                    config
-                    .AddInMemoryCollection(new Dictionary<string, string>
-                    {
-                         { "isCI", "true"}
-                    });
-                });
-            }
-
-            var host = builder.Build();
-
-            ProcessDbCommands(args, host);
-
-            host.Run();
+            CreateWebHostBuilder(args).Build().Run();
         }
-        
-        public static IWebHostBuilder CreateWebHostBuilder() =>
-            WebHost.CreateDefaultBuilder()
+
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>();
-
-        private static void ProcessDbCommands(string[] args, IWebHost host)
-        {
-            var services = (IServiceScopeFactory)host.Services.GetService(typeof(IServiceScopeFactory));
-
-            using (var scope = services.CreateScope())
-            {
-                var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-
-                if (args.Contains("ci"))
-                    args = new string[4] { "dropdb", "migratedb", "seeddb", "stop" };
-
-                if (args.Contains("dropdb"))
-                    context.Database.EnsureDeleted();
-
-                if (args.Contains("migratedb"))
-                    context.Database.Migrate();
-
-                if (args.Contains("seeddb"))
-                {
-                    context.Database.EnsureCreated();
-                }                
-            }
-        }        
     }
 }

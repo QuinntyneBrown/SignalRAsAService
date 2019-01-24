@@ -1,11 +1,8 @@
+using MediatR;
 using SignalRAsAService.Core.Identity;
 using SignalRAsAService.Core.Interfaces;
-using SignalRAsAService.Core.Models;
-using FluentValidation;
-using MediatR;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -13,15 +10,6 @@ namespace SignalRAsAService.API.Features.Users
 {
     public class AuthenticateCommand
     {
-        public class Validator : AbstractValidator<Request>
-        {
-            public Validator()
-            {
-                RuleFor(request => request.Username).NotEqual(default(string));
-                RuleFor(request => request.Password).NotEqual(default(string));
-            }            
-        }
-
         public class Request : IRequest<Response>
         {
             public string Username { get; set; }
@@ -38,13 +26,16 @@ namespace SignalRAsAService.API.Features.Users
 
         public class Handler : IRequestHandler<Request, Response>
         {
+            private readonly IAppDbContext _context;
             private readonly IPasswordHasher _passwordHasher;
             private readonly ISecurityTokenFactory _securityTokenFactory;
 
             public Handler(
+                IAppDbContext context,
                 ISecurityTokenFactory securityTokenFactory, 
                 IPasswordHasher passwordHasher)
             {
+                _context = context;
                 _securityTokenFactory = securityTokenFactory;
                 _passwordHasher = passwordHasher;
             }

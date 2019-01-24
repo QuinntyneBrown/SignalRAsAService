@@ -4,7 +4,7 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SignalRAsAService.Core.Identity
+namespace SignalRAsAService.API
 {
     public class AuthorizationHeaderParameterOperationFilter: IOperationFilter
     {
